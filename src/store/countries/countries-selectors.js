@@ -4,4 +4,4 @@ export const selectCountriesInfo = (state) => ({
     qty: state.countries.list.length
 })
 
-const selectAllCountries = (state) => state.countries.list;
+export const selectAllCountries = (state) => state.countries.list;
