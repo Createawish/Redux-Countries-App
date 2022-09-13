@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import {useSelector, useDispatch} from "react-redux";
 
 import { IoSearch } from 'react-icons/io5';
-import {selectSearch} from "../store/controls/control-selector";
-import {setSearch} from "../store/controls/controls-actions";
+import {selectSearch} from "../../store/controls/control-selector";
+import {setSearch} from "../../store/controls/controls-actions";
 import React from "react";
 
 const InputContainer = styled.label`

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch} from "@reduxjs/toolkit";
 import { Container } from './Container';
-import {clearControls} from "../store/controls/controls-actions";
+import {clearControls} from "../feature/controls/controlsSlice";
 import ThemeSwitcher from "../feature/theme/themeSwitcher";
 
 const HeaderEl = styled.header`
