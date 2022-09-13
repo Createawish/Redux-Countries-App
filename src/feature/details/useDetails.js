@@ -1,21 +1,19 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {clearDetails, loadCountryByName} from "./detailsSlice";
+import {useSelector, useDispatch} from 'react-redux';
+import {useEffect} from 'react';
 
+import { clearDetails, loadCountryByName, selectDetails } from './detailsSlice';
 
-export const useDetails = () => {
-    const { name } = useParams();
-    const navigate = useNavigate();
+export const useDetails = (name) => {
     const dispatch = useDispatch();
-    const {currentCountry, error, status} = useSelector(selectDetails)
+    const details = useSelector(selectDetails);
 
     useEffect(() => {
-        dispatch(loadCountryByName(name))
+        dispatch(loadCountryByName(name));
 
         return () => {
-            dispatch(clearDetails())
+            dispatch(clearDetails());
         }
-    },[name,dispatch])
-    return {navigate, name, currentCountry, error, status}
+    }, [name, dispatch]);
+
+    return details;
 }

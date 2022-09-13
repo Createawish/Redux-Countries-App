@@ -2,8 +2,8 @@ import React from 'react';
 import {Info} from "./Info";
 import {useDetails} from "./useDetails";
 
-const CountryDetails = () => {
-    const { status, error, currentCountry, navigate} = useDetails();
+const CountryDetails = ({name= '', navigate}) => {
+    const { status, error, currentCountry} = useDetails(name);
     return (
         <>
             {status === 'loading' && <h2>Loading...</h2>}
