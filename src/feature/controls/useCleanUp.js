@@ -1,5 +1,5 @@
 import {clearControls} from "./controlsSlice";
-import {useDispatch} from "@reduxjs/toolkit";
+import {useDispatch} from "react-redux";
 
 
 export const useCleanUp = () => {
