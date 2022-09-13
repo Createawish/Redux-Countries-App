@@ -3,6 +3,7 @@ import {IoMoon, IoMoonOutline} from "react-icons/io5";
 import {useDispatch, useSelector} from "react-redux";
 import {setTheme} from "./themeSlice";
 import styled from "styled-components";
+import {useTheme} from "./useTheme";
 
 
 
@@ -14,15 +15,7 @@ const ModeSwitcher = styled.div`
 `;
 
 const ThemeSwitcher = () => {
-    const dispatch = useDispatch();
-    const theme = useSelector(state => state.theme);
-
-    const toggleTheme =() => dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
-
-
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-    }, [theme]);
+  const {theme,toggleTheme} = useTheme();
 
     return (
         <ModeSwitcher onClick={toggleTheme}>
