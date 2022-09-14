@@ -6,7 +6,7 @@ import React from "react";
 
 export const Details = () => {
   const navigate = useNavigate();
-  const name = useParams();
+  const {name} = useParams();
 
   return (
     <div>
