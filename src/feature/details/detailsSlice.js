@@ -5,7 +5,17 @@ export const loadCountryByName = createAsyncThunk(
     (name,{extra: {client, api}}) => {
         return client.get(api.searchByCountry(name));
     }
-)
+);
+
+export const loadNeighborsByBorder = createAsyncThunk(
+    'details/load-neighbors-by-border',
+    (borders,{extra: {client, api}}) =>{
+        return client.get(api.filterByCode(borders));
+    }
+);
+
+
+
 
 const initialState = {
     currentCountry: null,
@@ -15,7 +25,7 @@ const initialState = {
 }
 
 
-export const detailsSlice = createSlice({
+ const detailsSlice = createSlice({
     name: 'details',
     initialState,
     reducers: {
@@ -23,7 +33,7 @@ export const detailsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(loadCountryByName.pending,(state, action) => {
+            .addCase(loadCountryByName.pending,(state) => {
                 state.status = 'loading';
                 state.error = null;
             })
@@ -36,7 +46,10 @@ export const detailsSlice = createSlice({
                 state.currentCountry = action.payload.data[0];
 
             })
+            .addCase(loadNeighborsByBorder.fulfilled,(state, action) => {
+                state.neighbors = action.payload.data.map(country =>country.name);
 
+            })
     }
 });
 

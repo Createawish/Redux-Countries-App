@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import React, {useEffect} from 'react'
-import {useDispatch, useSelector} from "react-redux";
-import {selectNeighbors} from "../store/detalis/details-selector";
-import {loadNeighborsByBorder} from "../store/detalis/details-actions";
+import React from 'react'
+import {useNeighbors} from "./useNeighbors";
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -107,14 +105,7 @@ export const Info = (props) => {
     push,
   } = props;
 
-  const dispatch = useDispatch();
-  const neighbors = useSelector(selectNeighbors);
-
-  useEffect(() => {
-    if(borders.length) {
-      dispatch(loadNeighborsByBorder(borders))
-    }
-  }, [borders, dispatch]);
+  const neighbors = useNeighbors(borders);
 
   return (
     <Wrapper>
